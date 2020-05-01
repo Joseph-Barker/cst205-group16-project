@@ -1,0 +1,6 @@
+(cst205env) PS C:\Users\Joseph\Documents\dev\
+ages/example_01.jpg --padding 0.05
+
+[INFO] loading EAST text detector...
+
+CR TEM
