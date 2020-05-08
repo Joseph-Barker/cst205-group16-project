@@ -1,7 +1,7 @@
 """
 Boris Marin, Joseph Barker, Joseph Rivera, Rogelio Rodriguez, Ramiro Soto
 CST 205 Project: Group 16
-Window.py
+Text.py
 5/8/2020
     This class is responsible for handling text extracted from image.
 """
