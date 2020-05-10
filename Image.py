@@ -27,6 +27,7 @@ class Image:
 		self.app_window = app_window
 		self.text = ""
 		self.kernel_size = kernel_size
+		
 		# Read image from which text needs to be extracted
 		self.file = cv2.imread( self.file_path )
 
@@ -36,7 +37,6 @@ class Image:
 		try:
 			# Convert the image to gray scale
 			self.gray = cv2.cvtColor( self.file, cv2.COLOR_BGR2GRAY )
-
 
 			# Performing OTSU threshold
 			self.ret, self.thresh1 = cv2.threshold(self.gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
@@ -57,44 +57,6 @@ class Image:
 		except:
 			print("An exception occurred when processing the image")
 
-	# A method for outputing text to file
-	def output_text_to_file(self):
-		try:
-			# Creating a copy of image
-			self.file2 = self.file.copy()
-
-			# A text file is created and flushed
-			self.text_file = open("./output/recognized.txt", "w+")
-			self.text_file.write("")
-			self.text_file.close()
-
-			# Looping through the identified contours
-			# Then rectangular part is cropped and passed on
-			# to pytesseract for extracting text from it
-			# Extracted text is then written into the text file
-			for self.cnt in reversed( self.contours ):
-			    self.x, self.y, self.w, self.h = cv2.boundingRect(self.cnt)
-
-			    # Drawing a rectangle on copied image
-			    self.rect = cv2.rectangle( self.file2, ( self.x, self.y ), ( self.x + self.w, self.y + self.h), (0, 255, 0), 2)
-
-			    # Cropping the text block for giving input to OCR
-			    self.cropped = self.file2[ self.y:self.y + self.h, self.x:self.x + self.w]
-
-			    # Open the file in append mode
-			    self.text_file = open("./output/recognized.txt", "a")
-
-			    # Apply OCR on the cropped image
-			    self.text = pytesseract.image_to_string(self.cropped)
-
-			    # Appending the text into file
-			    self.text_file.write( self.text )
-			    self.text_file.write("\n")
-
-			    # Close the file
-			    self.text_file.close
-		except:
-			print("An exception occurred when outputing text")
 
 	def produce_results(self):
 		try:

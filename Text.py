@@ -13,6 +13,7 @@ class Text:
 		# instance variables unique to each instance
 		self.text = text
 		self.app_window = app_window
-
-		self.app_window.text_output(text)
-
+		# handles overlaying of text output
+		replace = True
+		# update text edit with newly extracted text
+		self.app_window.text_output(text, replace)

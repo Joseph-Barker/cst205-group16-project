@@ -1,6 +1,6 @@
-What is the exact execution result?
-numbers = []
-Ors xeeani ele 2a]
-for y in [3,x]:
-numbers. append(x+y)
-print (numbers)
+(cst205env) PS C:\Users\Joseph\Documents\dev\
+ages/example_01.jpg --padding 0.05
+
+[INFO] loading EAST text detector...
+
+CR TEM
