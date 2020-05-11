@@ -20,28 +20,30 @@ class Window(QWidget):
 	# Initialises the window (object of the class)
 	def __init__(self):
 		super().__init__()
+		# Set the dimantions, title and layout for the PyQt window
 		self.setGeometry(350, 100, 1000, 700)
 		self.setWindowTitle("Text Recognition")
 		self.grid = QGridLayout(self)
 
+		# Creates the label for Image input and Text output headers
 		label = QLabel(self)
 		label.setText("Image input")
 		self.grid.addWidget(label, 0, 0)
-
 		label1 = QLabel(self)
 		label1.setText("Text output")
 		self.grid.addWidget(label1, 0, 1)
+
 		# Creates the check box
 		box = QCheckBox("Output to the file")
 		self.grid.addWidget(box, 2, 1)
 		box.stateChanged.connect(self.check_box_change)
 		# A string in case user wantes to output text to the file
 		self.text_file_link = ""
-		#setting for Image OTSU
+		# Setting for Image OTSU
 		self.kernel_size = 20
 
-	# handles the check box so the user may choose to output text to the file, and does not trigger then user unselects
-	# the box
+	# Handles the check box so the user may choose to output text to the file,
+	# and does not trigger then user unselects the box
 	def check_box_change(self):
 		global box_change
 		box_change = box_change + 1
@@ -53,6 +55,7 @@ class Window(QWidget):
 	# Creates the text box for the Kernel size setting
 	def text_box(self, text):
 		global kernel_change
+		# Checks if there is a need to create a new label for the kernel box
 		if (kernel_change == 0):
 			self.label = QLabel(self)
 		self.label.clear()
@@ -61,6 +64,7 @@ class Window(QWidget):
 
 	# Create text edit for to display extracted text output
 	def text_edit(self, text, x_c, y_c, replace):
+		# Checks if there is a need to create a new label for the Outputted text
 		if(replace == False):
 			self.label_edit = QTextEdit(self)
 		self.label_edit.setText(text)
@@ -68,6 +72,7 @@ class Window(QWidget):
 
 	# Creates the slider for kernel adjustment
 	def slider_nob(self, x_c, y_c):
+		# Creates a slider node for the kernel size
 		slider = QSlider(self)
 		slider.setOrientation(QtCore.Qt.Orientation.Horizontal)
 		slider.setMinimum(10)
@@ -75,6 +80,7 @@ class Window(QWidget):
 		slider.setValue(self.kernel_size)
 		slider.setTickPosition(QSlider.TicksBelow)
 		slider.setTickInterval(5)
+		# Records the change in the kernel size
 		global kernel_change
 		kernel_change = kernel_change + 1
 		slider.valueChanged.connect(self.valuechange)
@@ -83,6 +89,8 @@ class Window(QWidget):
 	# Outputs the text to the file or to the text edit box in the program.
 	def text_output(self, text, replace):
 		global box_change
+		# Checks if there is a need to open file diolog for the text to file output check box,
+		# so it does not trigger then user unselects the check box
 		if box_change%2 != 0:
 			self.text_file = open(str(self.text_file_link[0]), "w+")
 			self.text_file.write(text)
@@ -101,6 +109,7 @@ class Window(QWidget):
 			else:
 				im = im.scaled(400, (400*ratio))
 			global event
+			# Checks if there is a need to create a new label for the representation of the inputted image
 			if event == 1:
 				self.label_im = QLabel()
 			self.label_im.clear()
