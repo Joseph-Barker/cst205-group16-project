@@ -1,19 +1,33 @@
-# Project Title
+# Text Recognizer
 
-One Paragraph of project description goes here
+We have created a program where the user inputs an image and it reads the text. Then the program will output the plain text. The program should help solve the problem of retyping text from the image or improper text copying from PDF.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+After cloning this repo to your local machine, install all necessary dependencies and libraries.
+Once installed run Window.py and click open file to select your image.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+PyQt5
 ```
-Give examples
+pip install pyqt5
 ```
 
+OpenCV
+```
+pip install opencv-python
+```
+
+Pytesseract
+```
+pip install pytesseract
+```
+
+Numpy
+```
+pip install numpy
+```
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
