@@ -66,7 +66,7 @@ class Window(QWidget):
 		self.label_edit.setText(text)
 		self.grid.addWidget(self.label_edit, x_c, y_c)
 
-	# Creaes the slider for kernel ajustment
+	# Creates the slider for kernel adjustment
 	def slider_nob(self, x_c, y_c):
 		slider = QSlider(self)
 		slider.setOrientation(QtCore.Qt.Orientation.Horizontal)
